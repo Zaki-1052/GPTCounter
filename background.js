@@ -14,7 +14,7 @@ function startTimer() {
 
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
-        if (details.method === 'POST' && details.url.includes('https://chat.openai.com/backend-api/conversation')) {
+        if (details.method === 'POST' && details.url.includes('https://chatgpt.com/backend-api/conversation')) {
             timestamps.push(Date.now());
             if (timer === null) {
                 startTimer();
@@ -23,6 +23,6 @@ chrome.webRequest.onBeforeRequest.addListener(
             chrome.storage.local.set({'count': timestamps.length, 'time': remainingTime});
         }
     },
-{urls: ["*://chat.openai.com/*"]}
+{urls: ["*://chatgpt.com/*"]}
 );
 
